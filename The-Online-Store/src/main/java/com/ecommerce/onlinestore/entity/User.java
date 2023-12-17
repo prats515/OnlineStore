@@ -3,6 +3,8 @@ package com.ecommerce.onlinestore.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.UUID;
+
 @Entity
 @Table
 @Data
@@ -11,7 +13,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    private int customerId;
+    private UUID customerId;
 
     private String firstName;
 
@@ -23,5 +25,4 @@ public class User {
 
     private String password;
 
-    private Address address;
 }
