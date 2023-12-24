@@ -19,14 +19,19 @@ public class UserController {
         return "registration";
     }
 
-    @PostMapping("/save")
-    public String registerUserAccount(@ModelAttribute("user") User registrationDto) {
-        userService.saveUser(registrationDto);
+    @PostMapping("/registrationmethod")
+    public String registerUserAccount(@ModelAttribute("user") User user) {
+        System.out.println("In controller"+user);
+        userService.saveUser(user);
         return "redirect:/registration?success";
     }
 
     @ModelAttribute("user")
     public User userDto() {
         return new User();
+    }
+    @GetMapping("/login")
+    public String login() {
+        return "login";
     }
 }
