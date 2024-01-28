@@ -5,6 +5,7 @@ import com.ecommerce.onlinestore.entity.User;
 import com.ecommerce.onlinestore.repos.UserRepo;
 import com.ecommerce.onlinestore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -23,13 +25,18 @@ public class UserServiceImpl implements UserService {
     @Autowired
     public UserRepo userRepo;
 
-    @Autowired
+   @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
     /*@Override
     public void saveUser(User user) {
         userRepo.save(user);
     }*/
+
+    @Override
+    public List<User> getUser(){
+        return userRepo.findAll();
+    }
 
 
     @Override
@@ -48,11 +55,6 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
-
-/*    private  User dtoToCustomer(User userDto) {
-        User user= modelMapper().map(userDto, Customer.class);
-        return user;
-    }*/
 
 
     @Override
